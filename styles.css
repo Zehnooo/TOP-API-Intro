@@ -81,16 +81,16 @@ body {
 .content figure {
     width: auto;
     max-width: 300px;
+    opacity: 1;
+    transition: opacity .2s ease;
 }
 
 .content figure img {
     width: 100%;
     height: 100%;
-    opacity: 1;
-    transition: opacity .2s ease;
-
 }
 
 .hide {
-    opacity: 0;
+    opacity: 0 !important;
+    transition: opacity .2s ease;
 }

@@ -21,12 +21,12 @@ export async function findGif(refresh = false){
         const val = getUserInput();
 
         if (val === undefined) {
+            clearGif();
+            document.querySelector('figure').className = 'hide';
             if (inputDelay !== null){
                 clearTimeout(inputDelay);
                 inputDelay = null;
             }
-            clearGif();
-            document.querySelector('figure').className = 'hide';
         } else {
             if (inputDelay !== null) {
                 clearTimeout(inputDelay);

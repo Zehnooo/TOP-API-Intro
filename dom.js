@@ -22,6 +22,7 @@ export const dom = () => {
         newGif.disabled = true;
 
     const imgCon = document.createElement('figure');
+    imgCon.className = 'hide';
 
     const gif = document.createElement('img');
         gif.id = 'gif-slot';
