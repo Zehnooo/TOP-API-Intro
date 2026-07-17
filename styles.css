@@ -23,7 +23,7 @@ body {
 }
 
 .container {
-    margin: 0 auto;
+    margin: 2rem auto;
     width: auto;
     max-width: 800px;
     height: auto;
@@ -31,7 +31,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: start;
     gap: .6rem;
 }
 
