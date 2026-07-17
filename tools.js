@@ -21,8 +21,8 @@ export async function findGif(refresh = false){
         const val = getUserInput();
 
         if (val === undefined) {
-            clearGif();
             document.querySelector('figure').className = 'hide';
+            clearGif();
             if (inputDelay !== null){
                 clearTimeout(inputDelay);
                 inputDelay = null;
