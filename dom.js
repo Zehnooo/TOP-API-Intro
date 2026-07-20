@@ -1,14 +1,15 @@
 import {findGif} from './tools.js'
 
 
-export const dom = () => {
+export const initDom = () => {
     const  main  = document.querySelector('#root');
 
     const con = document.createElement('div');
         con.className = 'container';
 
     const head = document.createElement('h2');
-        head.textContent = 'Welcome! Search for a gif.';
+        head.innerHTML = "Welcome! <br> Search for a gif";
+        head.style.whiteSpace = "pre-line";
 
     const content = document.createElement('div');
         content.className = 'content';
@@ -32,11 +33,13 @@ export const dom = () => {
 
     const gifyAttribute  = document.createElement('img');
     gifyAttribute.src = './giphy.png';
+    gifyAttribute.className = 'giphy';
 
     const  footer  = document.createElement('footer');
-    const footerCon  =  document.createElement('div');
     const github =  document.createElement('a');
     github.href  = 'https://github.com/Zehnooo/TOP-API-Intro';
+    github.textContent = 'Zehnooo/TOP-API-Intro';
+    github.target = '_blank';
 
 
 
@@ -44,12 +47,21 @@ export const dom = () => {
     toastCon.className = 'toasts';
 
     // document.body.append(toastCon);
+    footer.append(github);
     imgCon.append(gif, gifyAttribute);
     inputCon.append(search, newGif);
     content.append(inputCon, imgCon);
     con.append(head, content, toastCon);
-    main.append(con);
+    main.append(con, footer);
     return main;
+}
+
+export function updateGif(newGif) {
+    document.querySelector('#gif-slot').src = newGif;
+}
+
+export function clearGif() {
+    document.querySelector('#gif-slot').removeAttribute('src');
 }
 
 export function createToast(msg, type) {
@@ -66,4 +78,9 @@ function showToast(toast) {
     setTimeout(() => {
         toast.remove();
     }, 4000)
+}
+
+export function updateDisplay() {
+    document.querySelector('figure').className = '';
+    document.querySelector('.content').style.gap = "4rem";
 }

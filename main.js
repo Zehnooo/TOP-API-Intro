@@ -1,6 +1,5 @@
-import {dom} from './dom.js'
+import {initDom} from './dom.js'
 
 (() => {
-    const root = document.querySelector('#root');
-    root.append(dom());
+    initDom();
 })();

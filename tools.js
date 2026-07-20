@@ -1,4 +1,4 @@
-import { createToast } from './dom.js'
+import {clearGif, createToast, updateDisplay, updateGif} from './dom.js'
 
 const   key = '01mHy4bGKtEe6m74xG5NYKdgGaUutWXh',
         baseUrl = 'https://api.giphy.com/v1/gifs/translate';
@@ -36,13 +36,13 @@ export async function findGif(refresh = false){
 
             if (refresh === true) {
                 await loadGif(val);
-                document.querySelector('figure').className = '';
+                updateDisplay();
             }
             else if (refresh === false) {
                 inputDelay = setTimeout(async () => {
                     inputDelay = null;
                     await loadGif(val);
-                    document.querySelector('figure').className = '';
+                    updateDisplay();
                 }, 1000);
             }
         }
@@ -54,7 +54,7 @@ export async function findGif(refresh = false){
 
 async function loadGif(val){
     if (val === undefined) {return;}
-    const url = `${baseUrl}?api_key=${key}&s='${String(val)}'`;
+    const url = `${baseUrl}?api_key=${key}&s=${encodeURIComponent(String(val))}`;
     const res = await fetch(url);
     const data = await res.json();
     const msg = data?.meta?.msg ?? `HTTP ${res.status}`;
@@ -74,10 +74,3 @@ async function loadGif(val){
 
 }
 
-export function updateGif(newGif) {
-    document.querySelector('#gif-slot').src = newGif;
-}
-
-function clearGif() {
-    document.querySelector('#gif-slot').removeAttribute('src');
-}
