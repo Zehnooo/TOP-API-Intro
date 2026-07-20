@@ -8,7 +8,7 @@ export const initDom = () => {
         con.className = 'container';
 
     const head = document.createElement('h2');
-        head.innerHTML = "Welcome! <br> Search for a gif";
+        head.innerHTML = "Welcome! <br> Search for a GIF";
         head.style.whiteSpace = "pre-line";
 
     const content = document.createElement('div');

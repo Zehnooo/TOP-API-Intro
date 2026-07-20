@@ -70,7 +70,6 @@ async function loadGif(val){
     }
 
     createToast( 'Gif found!', 'success' );
-    updateGif(data.data.images.original.url);
-
+    updateGif(data?.data?.images?.original?.url);
 }
 
