@@ -26,27 +26,26 @@ export const initDom = () => {
         newGif.disabled = true;
 
     const imgCon = document.createElement('figure');
-    imgCon.className = 'hide';
+        imgCon.className = 'hide';
 
     const gif = document.createElement('img');
         gif.id = 'gif-slot';
 
     const gifyAttribute  = document.createElement('img');
-    gifyAttribute.src = './giphy.png';
-    gifyAttribute.className = 'giphy';
+        gifyAttribute.src = './giphy.png';
+        gifyAttribute.className = 'giphy';
 
     const  footer  = document.createElement('footer');
+
     const github =  document.createElement('a');
-    github.href  = 'https://github.com/Zehnooo/TOP-API-Intro';
-    github.textContent = 'Zehnooo/TOP-API-Intro';
-    github.target = '_blank';
-
-
+        github.href  = 'https://github.com/Zehnooo/TOP-API-Intro';
+        github.textContent = 'Zehnooo/TOP-API-Intro';
+        github.target = '_blank';
 
     const toastCon = document.createElement('div');
-    toastCon.className = 'toasts';
+        toastCon.className = 'toasts';
 
-    // document.body.append(toastCon);
+
     footer.append(github);
     imgCon.append(gif, gifyAttribute);
     inputCon.append(search, newGif);
