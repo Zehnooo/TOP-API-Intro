@@ -46,6 +46,8 @@ body {
     gap: 1rem;
     display: flex;
     flex-direction: column;
+    position: relative;
+    margin: auto auto;
 }
 
 .content div {
@@ -63,6 +65,11 @@ body {
     border: 1px transparent;
     justify-self: center;
     cursor: pointer;
+    transition: transform .2s ease;
+}
+
+.content div button:active {
+    transform: scale(.85);
 }
 
 .content div input {
@@ -93,4 +100,34 @@ body {
 .hide {
     opacity: 0 !important;
     transition: opacity .2s ease;
+}
+
+.toasts {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: auto;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    gap: .8rem;
+}
+
+.toast {
+    min-width: 150px;
+    padding: .6rem;
+    border-radius: .6rem;
+    text-align: center;
+
+}
+
+.toast.error {
+    background: #7C0902;
+    color: #CE2029;
+}
+
+.toast.success {
+    background: #1B4D3E;
+    color: white;
 }

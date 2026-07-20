@@ -2,6 +2,7 @@ import {findGif} from './tools.js'
 
 
 export const dom = () => {
+
     const con = document.createElement('div');
         con.className = 'container';
 
@@ -27,10 +28,30 @@ export const dom = () => {
     const gif = document.createElement('img');
         gif.id = 'gif-slot';
 
+    const toastCon = document.createElement('div');
+    toastCon.className = 'toasts';
+
+    // document.body.append(toastCon);
     imgCon.append(gif);
     inputCon.append(search, newGif);
     content.append(inputCon, imgCon);
-    con.append(head, content);
+    con.append(head, content, toastCon);
 
     return con;
+}
+
+export function createToast(msg, type) {
+    const p = document.createElement('p');
+    p.textContent = msg;
+    type === 'error' ? p.className = 'toast error' : p.className = 'toast success';
+    showToast(p);
+}
+
+
+function showToast(toast) {
+    const toastCon = document.querySelector('.toasts');
+    toastCon.append(toast);
+    setTimeout(() => {
+        toast.remove();
+    }, 4000)
 }

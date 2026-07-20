@@ -1,3 +1,5 @@
+import { createToast } from './dom.js'
+
 const   key = '01mHy4bGKtEe6m74xG5NYKdgGaUutWXh',
         baseUrl = 'https://api.giphy.com/v1/gifs/translate';
 
@@ -54,12 +56,22 @@ async function loadGif(val){
     if (val === undefined) {return;}
     const url = `${baseUrl}?api_key=${key}&s='${String(val)}'`;
     const res = await fetch(url);
+    const data = await res.json();
+    const msg = data?.meta?.msg ?? `HTTP ${res.status}`;
+
     if (!res.ok) {
-        console.error(`HTTP ${res.status}`);
+        createToast(msg, 'error');
         return;
     }
-    const data = await res.json();
+
+    if (!data?.data?.images?.original?.url) {
+        createToast('No gif found...', 'error');
+        return;
+    }
+
+    createToast( 'Gif found!', 'success' );
     updateGif(data.data.images.original.url);
+
 }
 
 export function updateGif(newGif) {
