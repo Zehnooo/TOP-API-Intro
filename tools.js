@@ -48,7 +48,8 @@ export async function findGif(refresh = false){
         }
 
     } catch (err) {
-        console.error(err);
+        createToast(err, "error");
+            return;
     }
 }
 
